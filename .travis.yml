@@ -4,20 +4,20 @@ services:
   - docker 
 
 before_install :
-  - docker build -t radhakrishna1979/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t kommera1979/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true radhakrishna1979/react-test npm test
+  - docker run -e CI=true kommera1979/react-test npm test
 
 after_success:
-  - docker build -t radhakrishna1979/multi-client ./client
-  - docker build -t radhakrishna1979/multi-nginx ./nginx
-  - docker build -t radhakrishna1979/multi-server ./server
-  - docker build -t radhakrishna1979/multi-worker ./worker
+  - docker build -t kommera1979/multi-client ./client
+  - docker build -t kommera1979/multi-nginx ./nginx
+  - docker build -t kommera1979/multi-server ./server
+  - docker build -t kommera1979/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push radhakrishna1979/multi-client
-  - docker push radhakrishna1979/multi-nginx
-  - docker push radhakrishna1979/multi-server
-  - docker push radhakrishna1979/multi-worker
+  - docker push kommera1979/multi-client
+  - docker push kommera1979/multi-nginx
+  - docker push kommera1979/multi-server
+  - docker push kommera1979/multi-worker
 
 
